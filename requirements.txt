@@ -1,9 +1,5 @@
-# Here will the requirements of this project be listed. For example:
-# numpy==1.21.0
 pytest==9.0.2
 pytest-playwright==0.7.2
 pytest-html==4.2.0
-playwright==1.48.2
+playwright==1.43.0
 pytest-rerunfailures==16.1
-pytest-cov==4.0.0
-coverage==7.2.7
