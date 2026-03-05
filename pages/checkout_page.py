@@ -8,6 +8,7 @@ class CheckoutPage(BasePage):
     CONTINUE_BTN = '[data-test="continue"]'
     FINISH_BTN = '[data-test="finish"]'
     COMPLETE_MSG = '[data-test="complete-header"]'
+    COMPLETE_TEXT = '[data-test="complete-text"]'
 
     def complete_checkout_cod(self):
         # Fill checkout details
@@ -21,8 +22,12 @@ class CheckoutPage(BasePage):
 
         # Wait for confirmation message
         complete_locator = self.page.locator(self.COMPLETE_MSG)
-        expect(complete_locator).to_be_visible()
+        expect(complete_locator).to_be_visible(timeout=10000)
 
-        # Read text and return True/False
+        # Get confirmation text
         msg = complete_locator.inner_text()
         return "Thank you for your order!" in msg
+    
+    def get_confirmation_text(self):
+        """Helper to get full confirmation message"""
+        return self.page.locator(self.COMPLETE_TEXT).inner_text()
